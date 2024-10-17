@@ -1,5 +1,5 @@
 import express from 'express';
-import {createCategoryItems, deleteCategoryItems, getCategories, getCategoryByName, updateCategoryByName, } from '../controllers/categoryItemController.js'
+import {createCategoryItems, deleteCategoryItems, getCategories, getCategoryByName, updateCategory } from '../controllers/categoryItemController.js'
 
 const categoryRouter = express.Router();
 
@@ -12,7 +12,7 @@ categoryRouter.get("/", getCategories)
 categoryRouter.get("/:name", getCategoryByName)
 
 //test commits
-categoryRouter.put("/:name", updateCategoryByName)
+categoryRouter.put("/:name", updateCategory)
 
 
 export default categoryRouter; 

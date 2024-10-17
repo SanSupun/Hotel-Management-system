@@ -6,6 +6,8 @@ import mongoose from 'mongoose'
 import galleryItemRouter from './routes/galleryItemRoute.js'
 import jwt from 'jsonwebtoken'
 import categoryRouter from './routes/categoryRoute.js'; // Use './' for relative paths
+import roomRouter from './routes/roomRouts.js';
+
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -55,6 +57,7 @@ app.use("/api/users",userRouter)
 app.use("/api/gallery",galleryItemRouter)
 app.use("/api/category",categoryRouter)
 app.use("/api/login",userRouter)
+app.use("/api/rooms",roomRouter)
 
 app.listen(5000,(req,res)=>{
   console.log("Sever is running on on port 5000")

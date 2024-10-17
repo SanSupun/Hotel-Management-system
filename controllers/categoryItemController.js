@@ -1,5 +1,7 @@
 import category from "../models/category.js";
 import userRouter from "../routes/usersRoute.js";
+import mongoose from "mongoose";
+import {isAdminValid} from "../controllers/userControllers.js"
 
 export function createCategoryItems(req,res) {
    
@@ -130,15 +132,6 @@ export function getCategoryByName(req,res){
 }
 
 
-function isAdminValid(req){
-    if (req.user == null) {
-        return false
-    }
-    if (req.user.type != "admin") {
-        return false
-    }
-    return true
-}
 
 
 
@@ -151,5 +144,21 @@ export function updateCategory(req,res){
         return
     }
 
-    category.
+    const name = req.params.name
+
+    category.updateOne({name : name},req.body).then(
+        (result)=>{
+            res.json({
+                message : "Category updated successfully",
+                result : result
+            })
+        }
+    ).catch(
+        (err)=>{
+            res.json({
+                message : "Category update failed",
+                error : err
+            })
+        }
+    )
 }
